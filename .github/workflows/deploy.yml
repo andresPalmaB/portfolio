@@ -22,6 +22,10 @@ jobs:
       - name: Deploy via rsync
         run: |
           rsync -az --delete \
+            --exclude ".git/" \
+            --exclude ".github/" \
+            --exclude ".gitignore" \
+            --exclude "README.md" \
             -e "ssh -i ~/.ssh/id_ed25519" \
             ./ \
             ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}
