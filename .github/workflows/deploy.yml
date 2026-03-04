@@ -19,9 +19,11 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Deploy via rsync
+      - name: Deploy files to a new release folder
         run: |
-          rsync -az --delete --delete-excluded\
+          RELEASE_ID="${{ github.sha }}"
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "mkdir -p ~/releases/$RELEASE_ID"
+          rsync -az --delete --delete-excluded \
             --exclude ".git/" \
             --exclude ".github/" \
             --exclude ".gitignore" \
@@ -29,4 +31,12 @@ jobs:
             --exclude "deploy.sh" \
             -e "ssh -i ~/.ssh/id_ed25519" \
             ./ \
-            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/releases/$RELEASE_ID/
+
+      - name: Switch current symlink + keep last 5 releases
+        run: |
+          RELEASE_ID="${{ github.sha }}"
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "
+            ln -sfn ~/releases/$RELEASE_ID ~/current &&
+            ls -1dt ~/releases/* | tail -n +6 | xargs -r rm -rf
+          "
