@@ -21,7 +21,7 @@ jobs:
 
       - name: Deploy via rsync
         run: |
-          rsync -az --delete \
+          rsync -az --delete --delete-excluded\
             --exclude ".git/" \
             --exclude ".github/" \
             --exclude ".gitignore" \
