@@ -82,3 +82,50 @@ h4 {
 p {
   color: var(--color-muted);
 }
+
+/* ========== LAYOUT CONTAINER ========== */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* =========== HEADER =========== */
+
+header {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* ========== DESKTOP RESPONSIVE ========== */
+
+@media (min-width: 768px) {
+    .header-layout{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: var(--space-lg);
+    }
+}
