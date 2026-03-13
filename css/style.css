@@ -122,9 +122,11 @@ header {
 /* ========== HERO SECTION ==========*/
 
 .hero-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-height: 590px;
+
 }
 
 /* ========== HERO CARD SECTION ==========*/
@@ -221,7 +223,8 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: var(--space-xl);
+  gap: var(--space-md);
+  min-height: 280px;
 }
 
 .skill-icon-section {
@@ -286,7 +289,7 @@ header {
 
 .projects-section-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
   padding: var(--space-md);
   gap: var(--space-2xl);
 }
@@ -297,12 +300,12 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 490px;
   gap: var(--space-md);
 }
 
 .img-project-card{
   width: 100%;
-  max-width: 360px;
   margin: 0 auto;
 }
 
@@ -372,6 +375,7 @@ header {
   .hero-layout{
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     gap: 0;
   }
 }
@@ -386,5 +390,10 @@ header {
     align-items: center;
     gap: 0;
   }
+}
 
+@media (max-width: 400px) {
+  .skill-icon-section{
+    display: none;
+  }
 }
