@@ -68,8 +68,12 @@ body {
   color: var(--color-text);
 }
 
-section {
+.page-section {
   padding: var(--space-2xl) var(--space-md);
+}
+
+.section-title {
+  padding: var(--space-md);
 }
 
 h1,
@@ -125,10 +129,6 @@ header {
 
 /* ========== HERO CARD SECTION ==========*/
 
-#hero-card {
-  padding: var(--space-md) var(--space-md);
-}
-
 .hero-card-layout {
   width: 100%;
   max-width: 420px;
@@ -138,40 +138,36 @@ header {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-xs);
+  gap: var(--space-md);
   padding: var(--space-md);
 }
 
 .photo {
   width: 250px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
 }
 
-#logo-place {
+.social-links {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--space-sm);
 }
 
-#logo-place a {
+.social-links a {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-#logo-place svg {
+.social-links svg {
   width: 24px;
   height: 24px;
   display: block;
 }
 
 /*========== HERO SUMMARY SECTION ========== */
-
-#hero-summary {
-  padding: var(--space-md);
-}
 
 .hero-summary-layout{
   width: 100%;
@@ -181,6 +177,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  padding: var(--space-md);
 }
 
 .hero-summary-list {
@@ -202,42 +199,36 @@ header {
 
 /* ========== SKILL SECTION ========== */
 
-#skills-section h2 {
-  padding: var(--space-md);
-}
-
 .skills-section-layout {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+  padding: var(--space-md);
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .skill-subsection {
   padding: var(--space-md);
   width: 100%;
-  max-width: 360px;
   margin: 0 auto;
 }
 
 .skill-subsection-layout {
+  padding: var(--space-md) 0;
+
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-}
-
-.skill-subsection-layout section {
-  padding: 0;
-  padding-top: var(--space-md);
+  justify-content: center;
+  gap: var(--space-xl);
 }
 
 .skill-icon-section {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .skill-icon-section svg{
@@ -249,11 +240,13 @@ header {
 /* ========== SKILL CARD SECTION ========== */
 
 .skill-card-section {
-  width: 100%;
-  max-width: 200px;
+  flex: 1;
+  max-width: 220px;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: var(--space-md);
 }
 
 .par {
@@ -261,12 +254,10 @@ header {
 }
 
 .skill-card {
-  padding: var(--space-md);
-
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-content: center;
+  gap: var(--space-xs);
 }
 
 .skill-card-logo {
@@ -285,30 +276,19 @@ header {
   align-items: center;
 }
 
-.skill-card-description p {
-  display: block;
-}
-
 .skill-card-name {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.skill-card-name h4 {
-  display: block;
-  text-align: right;
-}
-
 /* ========== PROJECT SECTION ==========*/
-
-#projects-section h2 {
-  padding: var(--space-md);
-}
 
 .projects-section-layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  padding: var(--space-md);
+  gap: var(--space-2xl);
 }
 
 .project-card {
@@ -353,23 +333,15 @@ header {
 
 /* ========== FOOTER SECTION =========== */
 
-#contact-section h2 {
-  padding: var(--space-sm);
-}
-
 .contact-section-layout {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.contact-section-layout p {
   padding: var(--space-md);
+  gap: var(--space-md);
 }
 
 .contact-links {
-  padding: var(--space-sm);
-
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -378,6 +350,7 @@ header {
 .contact-links a svg {
   width: 50px;
   height: 50px;
+  display: block;
 }
 
 /* ========== DESKTOP RESPONSIVE ========== */
@@ -414,8 +387,4 @@ header {
     gap: 0;
   }
 
-  .skills-section-layout  .skill-subsection:last-child{
-    grid-column: span 2;
-    justify-self: center;
-  }
 }
